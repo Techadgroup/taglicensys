@@ -1,0 +1,142 @@
+:host {
+  margin: 0;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0058a0;
+}
+
+.scrollbar {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 0px auto;
+  background-color: #011754;
+  position: absolute;
+}
+
+/* .force-overflow {
+    min-height: 100px;
+} */
+
+.scrollbar-primary::-webkit-scrollbar {
+  width: 2px;
+  background-color: whitesmoke;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background-color: #9e9ea0;
+}
+
+.sidebar {
+  width: 225px;
+  height: fit-content;
+  min-height: 95vh;
+  /* background-color: #001336; */
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  font-family: "Poppins";
+  z-index: 1000;
+  background: rgb(0, 0, 0);
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Frosted glass effect for Safari */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.274); /* Optional shadow for depth */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.849),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: -1; /* Place behind the sidebar content */
+  border-radius: 0 0px 20px 0; /* Optional rounded corners */
+}
+
+.mat-icon {
+  font-size: 16px;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: #202020e5;
+  color: white;
+  border-radius: 5px;
+}
+
+.caret {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 9px;
+  transition: transform 0.3s ease;
+}
+
+.caret::before {
+  content: "▼";
+}
+
+.rotate {
+  transform: rotate(-180deg);
+}
+
+.dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  color: #bdc3c7;
+  text-decoration: none;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.dropdown-link:hover,
+.dropdown-link.active {
+  background-color: #202020e5;
+  color: #ecf0f1;
+  border-radius: 5px;
+}
+
+.nav-link .text {
+  flex-grow: 1; /* Allow text to take up remaining space */
+}

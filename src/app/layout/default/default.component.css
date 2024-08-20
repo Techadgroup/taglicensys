@@ -1,0 +1,41 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+
+  mat-drawer {
+    width: 225px;
+    /* width: 280px; */
+    height: calc(100vh - 50px); /* Adjust the height as per your header's height */
+    margin-top: 4%;    /* Adjust the margin as per your header's height */
+  
+
+  }
+
+  .drawer {
+    height: 100%;
+  }
+  
+  mat-drawer-container {
+    height: 100%;
+  }
+  
+  mat-drawer-content {
+    /* padding: 40px; */
+    padding-top: 1%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .drawer-content {
+    height: 100%;
+    overflow: auto;
+  }
+
+  /* .footer{
+    width: 70%;
+    display: flex;
+    justify-content: right;
+  } */

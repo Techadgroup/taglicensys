@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "TagLicenSys:build:production"
+              "buildTarget": "TagLicenSys:build:production"
             },
             "development": {
-              "browserTarget": "TagLicenSys:build:development"
+              "buildTarget": "TagLicenSys:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TagLicenSys:build"
+            "buildTarget": "TagLicenSys:build"
           }
         },
         "test": {

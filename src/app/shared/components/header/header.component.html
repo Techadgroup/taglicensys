@@ -1,0 +1,102 @@
+<nav class="fixed">
+    <div class="wrapper">
+      <div class="first fadeInRight">
+        <a (click)="toggleSideBar()" style="cursor: pointer; padding-left: 20px">
+          <img
+            src="assets/images/hamburger2.webp"
+            id="gg"
+            width="25px"
+            height="33px"
+            alt=""
+          />
+          &nbsp;
+        </a>
+        <img
+          style="cursor: pointer"
+          src="assets/images/tpp.png"
+          width="65px"
+          alt=""
+          routerLink="/home/admin/dashboard"
+        />
+  
+        <span
+          style="
+            margin: 0 0 0 40px;
+            font-size: 10px;
+            padding-bottom: 3px;
+            font-weight: bold;
+            color: #164086;
+          "
+          >License Management System</span
+        >
+      </div>
+  
+      <input type="radio" name="slider" id="menu-btn" />
+      <input type="radio" name="slider" id="close-btn" />
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"
+          ><img
+            src="assets/images/exit.png"
+            width="20px"
+            style="border-radius: 20px"
+            alt=""
+        /></label>
+  
+        <!-- <li id="package">
+          <a title="Subscription" style="cursor: pointer">
+            <h6>
+              Essential Free Trial <br />
+              25 days remaining <br>
+            </h6>
+          </a>
+        </li>&nbsp;&nbsp; -->
+  
+        
+  
+        <li id="sstatus">
+          <a title="fullscreen" style="cursor: pointer" 
+            ><img src="assets/images/fs.png" width="12px" alt=""
+          /></a>
+        </li>
+  
+        <li id="sstatus">
+          <a title="logout"
+            ><img
+              src="assets/images/logout.png"
+              width="22px"
+              style="cursor: pointer"
+              alt=""
+          /></a>
+        </li>
+  
+        <!-- Dropdown Menu -->
+        <li class="navbar-item dropdown">
+          <a href="#" class="navbar-link"
+            ><img
+              src="assets/images/settings.png"
+              width="22px"
+              style="cursor: pointer"
+              alt=""
+          /></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <a routerLink="admin/myprofile" class="dropdown-link">My Profile</a>
+            </li>
+            <li class="dropdown-item">
+              <a routerLink="admin/companyinfo" class="dropdown-link"
+                >Company Details</a
+              >
+            </li>
+            <li class="dropdown-item">
+              <a class="dropdown-link">Change Password</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn">
+        <img src="assets/images/hamburger2.webp" width="30" alt="" />
+      </label>
+    </div>
+  </nav>
+  
+  

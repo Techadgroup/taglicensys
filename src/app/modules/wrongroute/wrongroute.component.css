@@ -1,0 +1,60 @@
+.mainbody {
+  background-color: #ffffff;
+  font-family: poppins;
+  font-size: smaller;
+}
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(src/assets/images/dribble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-right: 0 auto;
+  margin-left: 20%;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #146ee4;
+  margin: 20px 0;
+  display: inline-block;
+}
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+/* media query */
+
+@media only screen and (max-width: 600px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-right: 0 auto;
+    margin-left: 0%;
+  }
+}

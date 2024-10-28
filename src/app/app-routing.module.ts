@@ -6,6 +6,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PackagesComponent } from './modules/packages/packages.component';
 import { CompaniesComponent } from './modules/companies/companies.component';
 import { WrongrouteComponent } from './modules/wrongroute/wrongroute.component';
+import { InvoicesComponent } from './modules/invoices/invoices.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'admin/dashboard', component: DashboardComponent },
       { path: 'admin/packages', component: PackagesComponent },
       { path: 'admin/companies', component: CompaniesComponent },
+      { path: 'admin/invoices', component: InvoicesComponent },
     ],
   },
 

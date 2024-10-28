@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './companies.component.html',
   styleUrl: './companies.component.css',
 })
-export class CompaniesComponent {}
+export class CompaniesComponent {
+  editFunction() {}
+}

@@ -7,24 +7,24 @@ import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DefaultModule } from './layout/default/default.module';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CompaniesComponent } from './modules/companies/companies.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
+    RouterModule,
     MatIconModule,
     DefaultModule,
     NgbNavModule,
-    NgbModule
-    
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

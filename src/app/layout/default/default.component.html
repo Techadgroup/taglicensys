@@ -1,13 +1,13 @@
 <app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen" class="drawer">
-        <app-sidenav></app-sidenav>
-        <ngx-ui-loader fgsColor="#ffff" style="z-index: 1100;"></ngx-ui-loader>
-    </mat-drawer>
-    <mat-drawer-content style="width: auto; overflow: auto;" class="drawer-content">
-        <router-outlet (activate)="onActivate($event)"></router-outlet>
-    </mat-drawer-content>
-
-
-
+  <mat-drawer mode="side" [opened]="sideBarOpen" class="drawer">
+    <app-sidenav></app-sidenav>
+    <ngx-ui-loader fgsColor="#ffff" style="z-index: 1100"></ngx-ui-loader>
+  </mat-drawer>
+  <mat-drawer-content
+    style="width: auto; overflow: auto"
+    class="drawer-content"
+  >
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </mat-drawer-content>
 </mat-drawer-container>

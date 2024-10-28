@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'home',
     component: DefaultComponent,
     children: [
-      { path: '', component: DashboardComponent },
+      { path: 'admin/dashboard', component: DashboardComponent },
       { path: 'admin/packages', component: PackagesComponent },
       { path: 'admin/companies', component: CompaniesComponent },
     ],
@@ -24,8 +24,8 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    component: WrongrouteComponent
-  }
+    component: WrongrouteComponent,
+  },
 ];
 
 @NgModule({

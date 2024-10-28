@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent implements OnInit{
-	active = 1;
+export class DashboardComponent implements OnInit {
+  active = 1;
 
+  clientList = [{}, {}, {}];
 
-  ngOnInit() {
-      
-  }
+  ngOnInit() {}
+
+  editFunction() {}
 }

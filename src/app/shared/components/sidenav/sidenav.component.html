@@ -1,11 +1,8 @@
- <!-- new modules list -->
- <div class="sidebar scrollbar scrollbar-primary">
-    <ul class="nav-list">
-
-
-    
-      <!-- Customer Management -->
-      <!-- <li class="nav-item">
+<!-- new modules list -->
+<div class="sidebar scrollbar scrollbar-primary">
+  <ul class="nav-list">
+    <!-- Customer Management -->
+    <!-- <li class="nav-item">
         <a routerLink="/home/admin/employees" class="nav-link">
           <mat-icon>people</mat-icon><span class="text"
             >Customers</span
@@ -13,30 +10,83 @@
       
       </li> -->
 
-        <!-- Subscription -->
-        <li class="nav-item">
-            <a routerLinkActive="list-item-active"
-            routerLink="admin/dashboard" class="nav-link"> <mat-icon>dashboard</mat-icon><span class="text"> License Management</span></a>
+    <!-- ========== dashbaord link =========== -->
+    <li class="nav-item">
+      <a
+        routerLinkActive="list-item-active"
+        (click)="customeNav('/home/admin/dashboard')"
+        class="nav-link"
+      >
+        <mat-icon>dashboard</mat-icon><span class="text"> Dashboard </span></a
+      >
+    </li>
+
+    <!-- ========== invoice link =========== -->
+    <li class="nav-item">
+      <a
+        routerLinkActive="list-item-active"
+        routerLink="admin/dashboard"
+        class="nav-link"
+      >
+        <mat-icon>sell</mat-icon><span class="text"> Invoices </span></a
+      >
+    </li>
+
+    <!-- ========== companies link =========== -->
+    <li class="nav-item">
+      <a
+        routerLinkActive="list-item-active"
+        (click)="customeNav('/home/admin/companies')"
+        class="nav-link"
+      >
+        <mat-icon>apartment</mat-icon><span class="text"> Companies </span></a
+      >
+    </li>
+
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link">
+        <mat-icon>apartment</mat-icon>
+        <span class="text">Companies</span>
+        <span class="caret"></span
+      ></a>
+
+      <ul class="dropdown">
+        <li>
+          <a
+            (click)="customeNav('/home/admin/companies')"
+            class="dropdown-link"
+          >
+            View Companies</a
+          >
         </li>
+      </ul>
+    </li> -->
 
-
-<!-- Billing Administration -->
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <mat-icon>settings</mat-icon>
-          <span class="text">Billing</span>
-          <span class="caret"></span
-        ></a>
-        <ul class="dropdown">
-          <li><a routerLink="admin/systemusers" class="dropdown-link"> Users</a></li>
-          <li><a  routerLink="admin/systemroles" class="dropdown-link">Roles</a></li>
-          <!-- <li><a href="#" class="dropdown-link"> Audit Logs</a></li> -->
-
-
-        </ul>
-      </li>
-    </ul>
-    <br><br>
-  </div><br><br>
+    <!-- Billing Administration -->
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <mat-icon>settings</mat-icon>
+        <span class="text">Billing</span>
+        <span class="caret"></span
+      ></a>
+      <ul class="dropdown">
+        <li>
+          <a
+            (click)="customeNav('/home/admin/dashboard')"
+            class="dropdown-link"
+          >
+            Users</a
+          >
+        </li>
+        <li>
+          <a routerLink="admin/systemroles" class="dropdown-link">Roles</a>
+        </li>
+        <!-- <li><a href="#" class="dropdown-link"> Audit Logs</a></li> -->
+      </ul>
+    </li>
+  </ul>
+  <br /><br />
+</div>
+<br /><br />
 <!-- </mat-nav-list> -->
 <!-- </div> -->

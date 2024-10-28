@@ -40,12 +40,13 @@
   color: #fff !important;
   padding: 10px 20px;
   background: #146ee4;
-  margin: 20px 0;
+  margin: 10px 0;
   display: inline-block;
+  cursor: pointer;
 }
-.contant_box_404 {
+/* .contant_box_404 {
   margin-top: -50px;
-}
+} */
 
 /* media query */
 

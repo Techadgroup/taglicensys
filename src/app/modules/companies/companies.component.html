@@ -1,7 +1,17 @@
 <div class="container-fluid">
   <h3 class="mt-5">Companies</h3>
   <hr />
+
+  <!-- ================ loading spinner =============== -->
+  <div class="d-flex justify-content-center" *ngIf="loading == true">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- ==================== company list table ========== -->
   <table
+    *ngIf="loading == false"
     id="excel-table"
     class="table table-bordered center table-hover fadeInTop mt-1"
     cellspacing="5"
@@ -11,25 +21,27 @@
       <tr class="fw-bolder">
         <th>#</th>
         <th>CLIENT</th>
-        <th>PLAN</th>
-        <th>DURATION</th>
-        <th>START DATE</th>
-        <th>END DATE</th>
-        <th>AMOUNT (GHC)</th>
-        <th>STATUS</th>
+        <th>EMAIL</th>
+        <th>CONTACT</th>
+        <!-- <th>START DATE</th>
+        <th>END DATE</th> -->
+        <!-- <th>AMOUNT (GHC)</th> -->
+        <!-- <th>STATUS</th> -->
         <th>ACTION</th>
       </tr>
     </thead>
-    <tbody>
-      <tr style="text-align: center">
-        <td class="align-middle" scope="row">#</td>
-        <td class="align-middle">Prefos Ltd.</td>
-        <td class="align-middle">Lite (1-15)</td>
-        <td class="align-middle">1 year</td>
-        <td class="align-middle">20th Jan 2024</td>
-        <td class="align-middle">20th Jan 2025</td>
-        <td class="align-middle">5,000.00</td>
-        <td class="align-middle">ACTIVE</td>
+    <tbody *ngFor="let company of companyList; index as i">
+      <tr>
+        <td class="align-middle" scope="row">{{ 1 + i }}</td>
+        <td class="align-middle">
+          {{ company.first_name }} {{ company.last_name }}
+        </td>
+        <td class="align-middle">{{ company.email }}</td>
+        <td class="align-middle">{{ company.phone }}</td>
+        <!-- <td class="align-middle">20th Jan 2024</td>
+        <td class="align-middle">20th Jan 2025</td> -->
+        <!-- <td class="align-middle">5,000.00</td> -->
+        <!-- <td class="align-middle">ACTIVE</td> -->
         <td>
           <!-- ============== edit button ========= -->
           <button
@@ -51,26 +63,6 @@
           </button>
         </td>
       </tr>
-      <!-- <tr style="text-align: center">
-        <td class="align-middle" scope="row">2</td>
-        <td class="align-middle">Bidvest Finance</td>
-        <td class="align-middle">Advantage (1-15)</td>
-        <td class="align-middle">1 year</td>
-        <td class="align-middle">20th Jan 2024</td>
-        <td class="align-middle">20th Jan 2025</td>
-        <td class="align-middle">15,000.00</td>
-        <td class="align-middle">EXPIRED</td>
-      </tr> -->
-      <!-- <tr style="text-align: center">
-        <td class="align-middle" scope="row">3</td>
-        <td class="align-middle">Gokals Ltd.</td>
-        <td class="align-middle">Advantage Plus (31-60)</td>
-        <td class="align-middle">1 year</td>
-        <td class="align-middle">20th Jan 2024</td>
-        <td class="align-middle">20th Jan 2025</td>
-        <td class="align-middle">8,000.00</td>
-        <td class="align-middle">ACTIVE</td>
-      </tr> -->
     </tbody>
   </table>
 </div>

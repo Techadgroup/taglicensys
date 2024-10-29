@@ -1,7 +1,17 @@
 <div class="container-fluid">
   <h3 class="mt-5">Invoices</h3>
   <hr />
+
+  <!-- ================ loading spinner =============== -->
+  <div class="d-flex justify-content-center" *ngIf="loading == true">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- =============== invoice list  table =============== -->
   <table
+    *ngIf="loading == false"
     id="excel-table"
     class="table table-bordered center table-hover fadeInTop mt-1"
     cellspacing="5"
@@ -11,25 +21,27 @@
       <tr class="fw-bolder">
         <th>#</th>
         <th>CLIENT</th>
-        <th>PLAN</th>
-        <th>DURATION</th>
-        <th>START DATE</th>
-        <th>END DATE</th>
+        <th>EMAIL</th>
+        <!-- <th>AMOUNT</th> -->
+        <!-- <th>START DATE</th>
+        <th>END DATE</th> -->
         <th>AMOUNT (GHC)</th>
         <th>STATUS</th>
         <th>ACTION</th>
       </tr>
     </thead>
-    <tbody>
-      <tr style="text-align: center">
-        <td class="align-middle" scope="row">#</td>
-        <td class="align-middle">Prefos Ltd.</td>
-        <td class="align-middle">Lite (1-15)</td>
-        <td class="align-middle">1 year</td>
-        <td class="align-middle">20th Jan 2024</td>
-        <td class="align-middle">20th Jan 2025</td>
-        <td class="align-middle">5,000.00</td>
-        <td class="align-middle">ACTIVE</td>
+    <tbody *ngFor="let invoice of invoiceList; index as i">
+      <tr>
+        <td class="align-middle" scope="row">{{ 1 + i }}</td>
+        <td class="align-middle">
+          {{ invoice.customer.first_name }} {{ invoice.customer.last_name }}
+        </td>
+        <td class="align-middle">{{ invoice.customer.email }}</td>
+        <!-- <td class="align-middle">{{ invoice.amount }}</td> -->
+        <!-- <td class="align-middle">20th Jan 2024</td>
+        <td class="align-middle">20th Jan 2025</td> -->
+        <td class="text-end">{{ invoice.amount | number : "1.2" }}</td>
+        <td class="align-middle">{{ invoice.status | titlecase }}</td>
         <td>
           <!-- ============== edit button ========= -->
           <button
@@ -41,7 +53,12 @@
           </button>
 
           <!-- ============ view detaiils button ========== -->
-          <button type="button" class="btn btn-primary btn-sm m-1">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm m-1"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             <i class="bi bi-eye-fill"></i>
           </button>
 
@@ -51,26 +68,31 @@
           </button>
         </td>
       </tr>
-      <!-- <tr style="text-align: center">
-          <td class="align-middle" scope="row">2</td>
-          <td class="align-middle">Bidvest Finance</td>
-          <td class="align-middle">Advantage (1-15)</td>
-          <td class="align-middle">1 year</td>
-          <td class="align-middle">20th Jan 2024</td>
-          <td class="align-middle">20th Jan 2025</td>
-          <td class="align-middle">15,000.00</td>
-          <td class="align-middle">EXPIRED</td>
-        </tr> -->
-      <!-- <tr style="text-align: center">
-          <td class="align-middle" scope="row">3</td>
-          <td class="align-middle">Gokals Ltd.</td>
-          <td class="align-middle">Advantage Plus (31-60)</td>
-          <td class="align-middle">1 year</td>
-          <td class="align-middle">20th Jan 2024</td>
-          <td class="align-middle">20th Jan 2025</td>
-          <td class="align-middle">8,000.00</td>
-          <td class="align-middle">ACTIVE</td>
-        </tr> -->
     </tbody>
   </table>
+</div>
+
+<!-- =================== detailed view ================ -->
+<!-- Vertically centered modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+    </div>
+  </div>
 </div>

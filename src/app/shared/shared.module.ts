@@ -6,6 +6,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './components/login/login.component';
 import { CompaniesComponent } from '../modules/companies/companies.component';
+import { InvoicesComponent } from '../modules/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,14 @@ import { CompaniesComponent } from '../modules/companies/companies.component';
     FooterComponent,
     SidenavComponent,
     LoginComponent,
+    InvoicesComponent,
   ],
-  exports: [HeaderComponent, FooterComponent, SidenavComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    SidenavComponent,
+    InvoicesComponent,
+  ],
   imports: [CommonModule, MatIconModule],
 })
 export class SharedModule {}

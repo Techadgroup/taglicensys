@@ -1,0 +1,6 @@
+.modal-backdrop.show {
+  opacity: 0;
+}
+.modal-backdrop.fade.show {
+  opacity: 0;
+}

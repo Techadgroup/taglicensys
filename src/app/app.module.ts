@@ -9,7 +9,7 @@ import { DefaultModule } from './layout/default/default.module';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CompaniesComponent } from './modules/companies/companies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +23,7 @@ import { CompaniesComponent } from './modules/companies/companies.component';
     DefaultModule,
     NgbNavModule,
     NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

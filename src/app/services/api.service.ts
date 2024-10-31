@@ -20,4 +20,12 @@ export class ApiService {
   public postFunction(urlPath: String, dataBody): Observable<any> {
     return this._http.post(`${environment.baseApi}/${urlPath}`, dataBody);
   }
+
+  public putFunction(urlPath: String, dataBody): Observable<any> {
+    return this._http.put(`${environment.baseApi}/${urlPath}`, dataBody);
+  }
+
+  public deleteFunction(urlPath: String, dataBody): Observable<any> {
+    return this._http.put(`${environment.baseApi}/${urlPath}`, dataBody);
+  }
 }

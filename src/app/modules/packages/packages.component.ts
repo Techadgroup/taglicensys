@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-packages',
-
   templateUrl: './packages.component.html',
   styleUrl: './packages.component.css',
 })
@@ -26,9 +25,9 @@ export class PackagesComponent implements OnInit {
 
   getPackages() {
     this.loading = true;
-    this.apiService.getFunction('listplans').subscribe((val) => {
+    this.apiService.getFunction('plan/list').subscribe((val) => {
       this.loading = false;
-      // console.log(val);
+      console.log('plan list', val);
       this.packagesList = val;
     });
   }
@@ -37,10 +36,15 @@ export class PackagesComponent implements OnInit {
     const formData = this.packageForm.value;
     console.log(formData);
     formData.id = '';
-    this.apiService.postFunction('addplan', formData).subscribe((val) => {
-      this.loading = false;
-      console.log(val);
-    });
+    // ================ creating new plans =============
+    if (formData.id == null) {
+      this.apiService.postFunction('plan/create', formData).subscribe((val) => {
+        this.loading = false;
+        console.log('created item', val);
+      });
+    } else {
+      // ================= editing plans =================
+    }
   }
 
   createNew(action) {
@@ -52,9 +56,8 @@ export class PackagesComponent implements OnInit {
     }
   }
 
-  deletePackage(_t28: any) {
+  deletePackage(itemValue: any) {
     Swal.fire({
-      // title: "Are you sure?",
       text: 'Do you want to delete?',
       icon: 'question',
       showCancelButton: true,
@@ -63,9 +66,15 @@ export class PackagesComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.apiService
+          .deleteFunction(`plan/${itemValue.id}`, {})
+          .subscribe((val) => {
+            console.log('delete', val);
+          });
       }
     });
   }
+
   editFunction(packageInfo: any) {
     console.log(packageInfo);
     this.packageForm.patchValue(packageInfo);
@@ -76,7 +85,7 @@ export class PackagesComponent implements OnInit {
     this.packageForm = this.fb.group({
       id: '',
       amount: null,
-      interval: null,
+      billingCycle: null,
       name: null,
     });
   }

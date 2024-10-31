@@ -13,6 +13,7 @@ import { CompaniesComponent } from 'src/app/modules/companies/companies.componen
 import { PackagesComponent } from 'src/app/modules/packages/packages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvoicesComponent } from 'src/app/modules/invoices/invoices.component';
+import { TaxesComponent } from 'src/app/modules/taxes/taxes.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { InvoicesComponent } from 'src/app/modules/invoices/invoices.component';
     CompaniesComponent,
     PackagesComponent,
     InvoicesComponent,
+    // TaxesComponent,
+    TaxesComponent,
   ],
   imports: [
     CommonModule,

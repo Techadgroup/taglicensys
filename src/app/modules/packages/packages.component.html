@@ -97,6 +97,7 @@
                   type="text"
                   class="form-control"
                   formControlName="name"
+                  required
                 />
               </div>
             </div>
@@ -111,6 +112,7 @@
                   type="number"
                   class="form-control"
                   formControlName="amount"
+                  required
                 />
               </div>
             </div>
@@ -121,7 +123,7 @@
                 >Package Interval</label
               >
               <div class="col-sm-9">
-                <select class="form-select" formControlName="interval">
+                <select class="form-select" formControlName="interval" required>
                   <option value="monthly">Monthly</option>
                   <option value="annually">Annually</option>
                 </select>

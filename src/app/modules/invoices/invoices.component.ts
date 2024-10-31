@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { FormView } from 'src/app/services/form-view';
 
@@ -13,11 +14,13 @@ export class InvoicesComponent implements OnInit {
   loading: boolean = false;
   formView: FormView = FormView.listView();
   detailInfo;
+  taxForm: UntypedFormGroup;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private fb: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.getInvoiceList();
+    this.initForm();
   }
   getInvoiceList() {
     this.loading = true;
@@ -26,9 +29,6 @@ export class InvoicesComponent implements OnInit {
       console.log(val.data);
       this.invoiceList = val.data;
     });
-  }
-  editFunction() {
-    throw new Error('Method not implemented.');
   }
 
   viewDetails(invoice) {
@@ -40,5 +40,23 @@ export class InvoicesComponent implements OnInit {
     }
   }
 
-  // deleteFunction() {}
+  editTaxesFunction(detailInfo) {
+    console.log(detailInfo);
+    this.taxForm.patchValue(detailInfo);
+    this.formView.resetToCreateView();
+  }
+
+  savePackages() {
+    const formData = this.taxForm.value;
+    console.log(formData);
+  }
+
+  initForm() {
+    this.taxForm = this.fb.group({
+      id: '',
+      amount: null,
+
+      name: null,
+    });
+  }
 }

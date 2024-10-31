@@ -46,20 +46,20 @@
         <td class="align-middle">{{ invoice.status | titlecase }}</td>
         <td class="text-end">
           <!-- ============== edit button ========= -->
-          <button
+          <!-- <button
             type="button"
-            (click)="editFunction()"
+            (click)="editTaxesFunction(invoice.tax[0])"
             class="btn btn-success btn-sm m-1"
           >
             <i class="bi bi-pen-fill"></i>
-          </button>
+          </button> -->
 
           <!-- ============ view detaiils button ========== -->
           <button
-            class="btn btn-primary btn-sm m-1"
+            class="btn btn-outline-success btn-sm m-1"
             (click)="viewDetails(invoice)"
           >
-            <i class="bi bi-eye-fill"></i>
+            View
           </button>
 
           <!-- ============ delete   button ========== -->
@@ -258,7 +258,7 @@
         </div>
       </div>
 
-      <!-- Psychographics Section -->
+      <!-- Packages and Taxes-->
       <div class="col-md-6 fadeInLeft mb-2">
         <div class="card custom-card">
           <div class="card-header font-weight-bold">Packages and Taxes</div>
@@ -266,10 +266,10 @@
             <!-- <form> -->
             <!-- ========date of payment   ========= -->
             <div class="mb-3">
-              <h5>Taxes</h5>
+              <h5 class="items-title">Taxes</h5>
               <p *ngIf="detailInfo.tax.length == 0">No taxes to display</p>
               <div
-                class="row mb-1 mx-3"
+                class="row mb-1"
                 *ngFor="let tax of detailInfo.tax; index as i"
               >
                 <label for="inputPassword" class="col-sm-4 col-form-label"
@@ -287,13 +287,13 @@
 
             <!-- ========date of payment   ========= -->
             <div class="mb-3">
-              <h5>Packages</h5>
+              <h5 class="items-title">Packages</h5>
               <p *ngIf="detailInfo.line_items.length == 0">
                 No packages to display
               </p>
 
               <div
-                class="row mb-1 mx-3"
+                class="row mb-1"
                 *ngFor="let tax of detailInfo.line_items; index as i"
               >
                 <label for="inputPassword" class="col-sm-4 col-form-label"
@@ -308,9 +308,78 @@
                 </div>
               </div>
             </div>
-
-            <!-- </form> -->
+            <!-- edit button -->
+            <!-- <div class="d-flex justify-content-end mb-2">
+              <button
+                class="btn btn-primary"
+                (click)="editTaxesFunction(detailInfo.tax[0])"
+              >
+                Edit Taxes
+              </button>
+            </div> -->
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--=====================================================================
+                not being used but kept for future reference
+  ==================================================================  -->
+
+<!-- =================== edit view ================ -->
+<div *ngIf="formView.createView">
+  <!-- =============== close button ======= -->
+  <div class="d-flex justify-content-end mb-2">
+    <button class="btn btn-primary" (click)="viewDetails('')">Close</button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 fadeInRight">
+      <!-- =============== editing form ==================== -->
+      <div class="card">
+        <div class="card-header">Tax</div>
+        <div class="card-body">
+          <form [formGroup]="taxForm" (ngSubmit)="savePackages()">
+            <!-- ========= fPackage Name ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-4 col-form-label"
+                >Tax Name</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- ========= Package Amount ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-4 col-form-label"
+                >Tax Amt(%)</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="amount"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- =============== action button ========== -->
+            <div class="button-groups d-flex justify-content-center">
+              <button type="submit" class="btn btn-success m-1">Submit</button>
+              <button type="reset" class="btn btn-outline-danger m-1">
+                Clear
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

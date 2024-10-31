@@ -17,3 +17,7 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+.items-title {
+  background-color: #eaecef;
+  padding: 6px;
+}

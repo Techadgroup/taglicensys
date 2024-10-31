@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h3 class="mt-5">Companies</h3>
+  <h6 class=" ">Companies</h6>
   <hr />
 
   <!-- ================ loading spinner =============== -->
@@ -74,6 +74,208 @@
   <div class="container" *ngIf="formView.detailView">
     <div class="d-flex justify-content-end mb-2">
       <button class="btn btn-primary" (click)="viewDetails('')">Close</button>
+    </div>
+    <!-- ============= company details ============= -->
+
+    <div class="card mb-3 custom-card">
+      <div class="card-header font-weight-bold">Company Details</div>
+      <div class="card-body">
+        <div class="row">
+          <!-- ============================= -->
+          <div class="col-sm-10 col-md-8 col-lg-6 fadeInLeft">
+            <!-- ========= first name ======== -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Company name</label
+              >
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.company }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========last name ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Client name</label
+              >
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.name }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ========Phone Number ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Phone Number
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.phone }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========Email Address ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Email Address
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.email }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== description ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Location
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.location }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== number of users ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Employee size
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.employeesize }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================================== -->
+          <div class="col-sm-10 col-md-8 col-lg-6 fadeInRight">
+            <!-- ========= Company status ======== -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Company status</label
+              >
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.status }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ======== Business type ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Business type</label
+              >
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.businessType }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== Phone Number ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Industry
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.industry }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========Email Address ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Email Address
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.email }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== description ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Location
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.location }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== Company website ========= -->
+            <div class="mb-3 row">
+              <label
+                for="inputPassword"
+                class="col-sm-3 col-md-4 col-form-label"
+                >Company website
+              </label>
+              <div class="col-sm-9 col-md-8">
+                <input
+                  value=" {{ detailInfo.website }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

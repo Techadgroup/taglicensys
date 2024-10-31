@@ -14,14 +14,8 @@ import { InvoicesComponent } from '../modules/invoices/invoices.component';
     FooterComponent,
     SidenavComponent,
     LoginComponent,
-    InvoicesComponent,
   ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    SidenavComponent,
-    InvoicesComponent,
-  ],
+  exports: [HeaderComponent, FooterComponent, SidenavComponent],
   imports: [CommonModule, MatIconModule],
 })
 export class SharedModule {}

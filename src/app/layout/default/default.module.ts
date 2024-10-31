@@ -12,6 +12,7 @@ import { SidenavComponent } from 'src/app/shared/components/sidenav/sidenav.comp
 import { CompaniesComponent } from 'src/app/modules/companies/companies.component';
 import { PackagesComponent } from 'src/app/modules/packages/packages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InvoicesComponent } from 'src/app/modules/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CompaniesComponent,
     PackagesComponent,
+    InvoicesComponent,
   ],
   imports: [
     CommonModule,

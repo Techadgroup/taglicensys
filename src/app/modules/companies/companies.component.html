@@ -11,7 +11,7 @@
 
   <!-- ==================== company list table ========== -->
   <table
-    *ngIf="loading == false"
+    *ngIf="loading == false && formView.listView"
     id="excel-table"
     class="table table-bordered center table-hover fadeInTop mt-1"
     cellspacing="5"
@@ -20,49 +20,60 @@
     <thead class="thead-dark fw-bolder text-center">
       <tr class="fw-bolder">
         <th>#</th>
+        <th>COMPANY</th>
         <th>CLIENT</th>
         <th>EMAIL</th>
         <th>CONTACT</th>
-        <!-- <th>START DATE</th>
-        <th>END DATE</th> -->
+        <th>LOCATION</th>
+        <!--  <th>END DATE</th> -->
         <!-- <th>AMOUNT (GHC)</th> -->
-        <!-- <th>STATUS</th> -->
-        <th>ACTION</th>
+        <th>STATUS</th>
+        <!-- <th>ACTION</th> -->
       </tr>
     </thead>
     <tbody *ngFor="let company of companyList; index as i">
-      <tr>
+      <tr (click)="viewDetails(company)" class="table-cell">
         <td class="align-middle" scope="row">{{ 1 + i }}</td>
         <td class="align-middle">
-          {{ company.first_name }} {{ company.last_name }}
+          {{ company.company }}
+        </td>
+        <td class="align-middle">
+          {{ company.name }}
         </td>
         <td class="align-middle">{{ company.email }}</td>
         <td class="align-middle">{{ company.phone }}</td>
         <!-- <td class="align-middle">20th Jan 2024</td>
         <td class="align-middle">20th Jan 2025</td> -->
-        <!-- <td class="align-middle">5,000.00</td> -->
-        <!-- <td class="align-middle">ACTIVE</td> -->
-        <td>
-          <!-- ============== edit button ========= -->
-          <button
+        <td class="align-middle">{{ company.location }}</td>
+        <td class="align-middle">{{ company.status }}</td>
+        <!-- <td> -->
+        <!-- ============== edit button ========= -->
+        <!-- <button
             type="button"
             (click)="editFunction()"
             class="btn btn-success btn-sm m-1"
           >
             <i class="bi bi-pen-fill"></i>
-          </button>
+          </button> -->
 
-          <!-- ============ view detaiils button ========== -->
-          <button type="button" class="btn btn-primary btn-sm m-1">
+        <!-- ============ view detaiils button ========== -->
+        <!-- <button type="button" class="btn btn-primary btn-sm m-1">
             <i class="bi bi-eye-fill"></i>
-          </button>
+          </button> -->
 
-          <!-- ============ delete   button ========== -->
-          <button type="button" class="btn btn-danger btn-sm m-1">
+        <!-- ============ delete   button ========== -->
+        <!-- <button type="button" class="btn btn-danger btn-sm m-1">
             <i class="bi bi-trash-fill"></i>
-          </button>
-        </td>
+          </button> -->
+        <!-- </td> -->
       </tr>
     </tbody>
   </table>
+
+  <!-- ======================== detailed view =============== -->
+  <div class="container" *ngIf="formView.detailView">
+    <div class="d-flex justify-content-end mb-2">
+      <button class="btn btn-primary" (click)="viewDetails('')">Close</button>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { FormView } from 'src/app/services/form-view';
 
 @Component({
   selector: 'app-invoices',
@@ -10,6 +11,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class InvoicesComponent implements OnInit {
   invoiceList: any[] = [];
   loading: boolean = false;
+  formView: FormView = FormView.listView();
+  detailInfo;
 
   constructor(private apiService: ApiService) {}
 
@@ -28,5 +31,14 @@ export class InvoicesComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  deleteFunction() {}
+  viewDetails(invoice) {
+    if (invoice != '') {
+      this.detailInfo = invoice;
+      this.formView.resetToDetailView();
+    } else {
+      this.formView.resetToListView();
+    }
+  }
+
+  // deleteFunction() {}
 }

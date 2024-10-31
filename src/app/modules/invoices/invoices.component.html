@@ -11,7 +11,7 @@
 
   <!-- =============== invoice list  table =============== -->
   <table
-    *ngIf="loading == false"
+    *ngIf="loading == false && formView.listView"
     id="excel-table"
     class="table table-bordered center table-hover fadeInTop mt-1"
     cellspacing="5"
@@ -40,9 +40,11 @@
         <!-- <td class="align-middle">{{ invoice.amount }}</td> -->
         <!-- <td class="align-middle">20th Jan 2024</td>
         <td class="align-middle">20th Jan 2025</td> -->
-        <td class="text-end">{{ invoice.amount | number : "1.2" }}</td>
+        <td class="align-middle text-end">
+          {{ invoice.amount | number : "1.2" }}
+        </td>
         <td class="align-middle">{{ invoice.status | titlecase }}</td>
-        <td>
+        <td class="text-end">
           <!-- ============== edit button ========= -->
           <button
             type="button"
@@ -54,45 +56,263 @@
 
           <!-- ============ view detaiils button ========== -->
           <button
-            type="button"
             class="btn btn-primary btn-sm m-1"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            (click)="viewDetails(invoice)"
           >
             <i class="bi bi-eye-fill"></i>
           </button>
 
           <!-- ============ delete   button ========== -->
-          <button type="button" class="btn btn-danger btn-sm m-1">
+          <!-- <button type="button" class="btn btn-danger btn-sm m-1">
             <i class="bi bi-trash-fill"></i>
-          </button>
+          </button> -->
         </td>
       </tr>
     </tbody>
   </table>
-</div>
 
-<!-- =================== detailed view ================ -->
-<!-- Vertically centered modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+  <!-- =================== detailed view ================ -->
+
+  <div class="container" *ngIf="formView.detailView">
+    <!-- =============== close button ======= -->
+    <div class="d-flex justify-content-end mb-2">
+      <button class="btn btn-primary" (click)="viewDetails('')">Close</button>
+    </div>
+    <div class="row">
+      <!-- customer details Section -->
+      <div class="col-md-6 fadeInLeft">
+        <div class="card mb-3 custom-card">
+          <div class="card-header font-weight-bold">Customer Details</div>
+          <div class="card-body">
+            <!-- <form> -->
+            <!-- ========= first name ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >First name</label
+              >
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.customer.first_name }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========last name ========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Last name</label
+              >
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.customer.last_name }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ========Phone Number ========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Phone Number
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.customer.phone }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========Email Address ========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Email Address
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.customer.email }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ======== description ========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Description
+              </label>
+              <div class="col-sm-9">
+                <!-- <input
+                  value=" {{ detailInfo.customer.email }}"
+                  class="form-control"
+                  disabled
+                /> -->
+                <textarea
+                  class="form-control"
+                  [value]="detailInfo.description"
+                  rows="3"
+                  disabled
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- </form> -->
+          </div>
+        </div>
       </div>
-      <div class="modal-body">...</div>
+
+      <!-- account details Section -->
+      <div class="col-md-6 fadeInRight">
+        <div class="card mb-3 custom-card">
+          <div class="card-header font-weight-bold">Account Details</div>
+          <div class="card-body">
+            <!-- <form> -->
+            <!-- ========Account Status========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Account Status
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.status | titlecase }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========Amount ========= -->
+
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Amount
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.amount | number : '1.2' }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========payment Status ========= -->
+
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Payment Status
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ (detailInfo.paid && 'Paid') || 'Not Paid' }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- ========Currency   ========= -->
+
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Currency
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.currency }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ========date of payment   ========= -->
+            <div class="mb-3 row" *ngIf="detailInfo.paid == true">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Date of payment
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.paid_at }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- ========due date   ========= -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Due date
+              </label>
+              <div class="col-sm-9">
+                <input
+                  value=" {{ detailInfo.due_date }}"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- </form> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Psychographics Section -->
+      <div class="col-md-6 fadeInLeft mb-2">
+        <div class="card custom-card">
+          <div class="card-header font-weight-bold">Packages and Taxes</div>
+          <div class="card-body">
+            <!-- <form> -->
+            <!-- ========date of payment   ========= -->
+            <div class="mb-3">
+              <h5>Taxes</h5>
+              <p *ngIf="detailInfo.tax.length == 0">No taxes to display</p>
+              <div
+                class="row mb-1 mx-3"
+                *ngFor="let tax of detailInfo.tax; index as i"
+              >
+                <label for="inputPassword" class="col-sm-4 col-form-label"
+                  >{{ tax.name }}
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    value=" {{ detailInfo.amount | number : '1.2' }}"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- ========date of payment   ========= -->
+            <div class="mb-3">
+              <h5>Packages</h5>
+              <p *ngIf="detailInfo.line_items.length == 0">
+                No packages to display
+              </p>
+
+              <div
+                class="row mb-1 mx-3"
+                *ngFor="let tax of detailInfo.line_items; index as i"
+              >
+                <label for="inputPassword" class="col-sm-4 col-form-label"
+                  >{{ tax.name }}
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    value=" {{ detailInfo.amount | number : '1.2' }}"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- </form> -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

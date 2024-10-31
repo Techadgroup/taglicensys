@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { FormView } from 'src/app/services/form-view';
 
 @Component({
   selector: 'app-companies',
@@ -11,6 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class CompaniesComponent {
   companyList: any[] = [];
   loading: boolean = false;
+  detailInfo;
+  formView: FormView = FormView.listView();
 
   constructor(private apiService: ApiService) {}
 
@@ -24,10 +27,20 @@ export class CompaniesComponent {
 
   getInvoiceList() {
     this.loading = true;
-    this.apiService.getFunction('customer').subscribe((val) => {
+    this.apiService.getFunction('customer/list').subscribe((val) => {
       this.loading = false;
-      console.log(val.data);
-      this.companyList = val.data;
+      console.log(val);
+      this.companyList = val;
     });
+  }
+
+  viewDetails(company) {
+    if (company != '') {
+      this.detailInfo = company;
+      console.log('view');
+      this.formView.resetToDetailView();
+    } else {
+      this.formView.resetToListView();
+    }
   }
 }

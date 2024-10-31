@@ -10,11 +10,20 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from 'src/app/shared/components/sidenav/sidenav.component';
 import { CompaniesComponent } from 'src/app/modules/companies/companies.component';
+import { PackagesComponent } from 'src/app/modules/packages/packages.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [DefaultComponent, DashboardComponent, CompaniesComponent],
+  declarations: [
+    DefaultComponent,
+    DashboardComponent,
+    CompaniesComponent,
+    PackagesComponent,
+  ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule,
     SharedModule,

@@ -16,4 +16,8 @@ export class ApiService {
   public getFunction(urlPath: String): Observable<any> {
     return this._http.get(`${environment.baseApi}/${urlPath}`);
   }
+
+  public postFunction(urlPath: String, dataBody): Observable<any> {
+    return this._http.post(`${environment.baseApi}/${urlPath}`, dataBody);
+  }
 }

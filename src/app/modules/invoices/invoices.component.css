@@ -1,6 +1,19 @@
-.modal-backdrop.show {
-  opacity: 0;
+/* .modal-backdrop {
+  display: none;
 }
-.modal-backdrop.fade.show {
-  opacity: 0;
+.modal {
+  z-index: 1050 !important;
+} */
+/* .custom-card {
+  border: 2px solid #4b4b99;
+  background-color: #fde6a3;
+}
+
+.custom-card .card-header {
+  background-color: #4b4b99;
+  color: white;
+} */
+.card-header {
+  text-transform: uppercase;
+  font-weight: bold;
 }

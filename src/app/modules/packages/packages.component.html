@@ -1,4 +1,143 @@
 <div class="container-fluid">
-  <h3 class="mt-5">Packages</h3>
+  <div class="container title-button">
+    <h3 class="">Packages</h3>
+    <button
+      class="btn btn-primary"
+      *ngIf="formView.listView"
+      (click)="createNew('new')"
+    >
+      Add New Package
+    </button>
+    <button
+      class="btn btn-primary"
+      *ngIf="formView.createView"
+      (click)="createNew('')"
+    >
+      Close
+    </button>
+  </div>
+
   <hr />
+
+  <!-- ================ loading spinner =============== -->
+  <div class="d-flex justify-content-center" *ngIf="loading == true">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- ================ list of packages ============= -->
+  <table
+    *ngIf="loading == false && formView.listView"
+    id="excel-table"
+    class="table table-bordered center table-hover fadeInTop mt-1"
+    cellspacing="5"
+    width="100%"
+  >
+    <thead class="thead-dark fw-bolder text-center">
+      <tr class="fw-bolder">
+        <th>#</th>
+        <th>NAME</th>
+        <th>DURATION</th>
+        <th>AMOUNT (GHC)</th>
+        <th>ACTION</th>
+        <!--   <th>ACTION</th> -->
+      </tr>
+    </thead>
+    <tbody *ngFor="let itemValue of packagesList; index as i">
+      <tr>
+        <td class="align-middle" scope="row">{{ 1 + i }}</td>
+        <td class="align-middle">
+          {{ itemValue.name }}
+        </td>
+        <td class="align-middle">
+          {{ itemValue.interval | titlecase }}
+        </td>
+        <td class="align-middle text-end">
+          {{ itemValue.amount | number : "1.2" }}
+        </td>
+        <td class="align-middle text-end">
+          <!-- ============ edit button ========= -->
+          <button
+            type="button"
+            (click)="editFunction(itemValue)"
+            class="btn btn-success btn-sm m-1"
+          >
+            <i class="bi bi-pen-fill"></i>
+          </button>
+
+          <!-- ============ delete button ========== -->
+          <button
+            class="btn btn-danger btn-sm m-1"
+            (click)="deletePackage(itemValue)"
+          >
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =============== new packages ============== -->
+<div *ngIf="formView.createView">
+  <div class="row">
+    <div class="col-md-8 fadeInLeft">
+      <div class="card">
+        <div class="card-header">Add New Package</div>
+        <div class="card-body">
+          <form [formGroup]="packageForm" (ngSubmit)="savePackages()">
+            <!-- ========= fPackage Name ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Package Name</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                />
+              </div>
+            </div>
+
+            <!-- ========= Package Amount ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Package Amount</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="amount"
+                />
+              </div>
+            </div>
+
+            <!-- ========= first name ======== -->
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Package Interval</label
+              >
+              <div class="col-sm-9">
+                <select class="form-select" formControlName="interval">
+                  <option value="monthly">Monthly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- =============== action button ========== -->
+            <div class="button-groups d-flex justify-content-center">
+              <button type="submit" class="btn btn-success m-1">Submit</button>
+              <button type="reset" class="btn btn-outline-danger m-1">
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
